@@ -1,5 +1,6 @@
 import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
+import {useRouter} from "next/router";
 
 const config: DocsThemeConfig = {
   logo: <span>Cue AI</span>,
@@ -10,6 +11,15 @@ const config: DocsThemeConfig = {
   footer: {
     text: 'Cue AI',
   },
+  useNextSeoProps() {
+    const { asPath } = useRouter()
+    if (asPath !== '/') {
+      return {
+        description: 'Cue AI Documentation',
+        titleTemplate: '%s – Cue AI'
+      }
+    }
+  }
 }
 
 export default config

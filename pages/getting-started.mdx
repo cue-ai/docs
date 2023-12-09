@@ -4,10 +4,117 @@ Before building your first dashboard, it's highly recommended to read through th
 ## Add a Data Sources
 Cue supports a variety of data sources out-of-box. To add a data source, click on the `Data Sources` tab on the left navigation bar. Then click on the `Add Data Source` button.
 
+![Data Sources](/images/data-page/data-sources.png)
 
+Data sources can either be direct connections or ETL connections. Select the data source you want to add and follow the instructions to add the data source.
+
+![Service Account](/images/data-page/service-account.png)
+
+For this example, we'll add a BigQuery direct connection.
 
 ## Create a Data Model
 
-## Setup a Dataset
+After you've connected a data source, lets create a new model. Data models are used to define the data that you want to visualize. To create a new model, click on the `Data Models` tab on the left navigation bar. Then click on the `Add Data Model` button.
+
+![Create a model](/images/data-page/create-model.png)
+
+Add a name, the table that the model is built on, and a description.
+
+Once you've created a model, lets add some `metrics` and `dimensions`. Metrics are the values that you want to visualize and are calculated by performing an aggregation on top of multiple rows. Dimensions are the values that you want to group by.
+
+For example, if we wanted to visualize the average account balance by customer segment, the metric would be the average account balance and the dimension would be the customer segment.
+
+Lets start by adding a metric. Below is an example of a metric that calculates the average account balance. Note the metric type, which denotates the type of calculation. Cue supports some preset options, like Sum, Average, Count, etc. If you need a custom calculation, you can select `Custom` and write a SQL expression.
+
+![Metric Settings](/images/data-page/metric-settings.png)
+
+Then, lets add a dimension to group our data - in this case, we'll group by customer segment.
+
+![Dimension Settings](/images/data-page/dimension-settings.png)
+
+Most customers will add multiple metrics and dimensions to a model so your data can be sliced and diced in multiple ways. For example, you may want to visualize the average account balance by customer segment and account type. To do this, you would add a new dimension for account type.
+
+![Data Models](/images/data-page/data-models.png)
+
+## Add a customer
+
+Now that we've created a data model, lets add a customer. To add a customer, click on the `Customers` tab on the left navigation bar. Then click on the `Add Customer` button.
+
+Customers are used to define the data that a user can access. Each customer has a level. Levels help group customers for multi-tenant applications. For example, if you have a multi-tenant application, you may want to group customers by organization. Cue supports any number of levels, but most customers will only need one or two.
+
+![Customers](/images/customers-page/customers.png)
 
 ## Create a Dashboard
+
+Now that we've created a data model, lets create a dashboard. To create a new dashboard, click on the `Dashboards` tab on the left navigation bar. Then click on the `Add Dashboard` button.
+
+![Create a dashboard](/images/dashboard-page/dashboard-empty.png)
+
+Dashboards consist of `datasets` and `items`. Datasets are queries that are run against your data model and items are components that are rendered on your dashboard.
+
+Lets edit this dashboard and add some datasets and items. Click on the `Edit` button on the top right corner of the dashboard to access the dashboard editor.
+
+![Dashboard Editor](/images/dashboard-page/dashboard-editor.png)
+
+### Add a dataset
+
+To add a dataset, click on the `Add Dataset` button.
+
+![Add Dataset](/images/dashboard-page/add-dataset.png)
+
+For each dataset, you'll need to specify a name and either a metric or a set of dimensions.
+
+![Dataset Settings](/images/dashboard-page/dataset.png)
+
+If querying a metric, you can also query over a specific time range. In this case, you'll select the time dimension that you want to query over, then select both the time range (or how long you want the time range to be) and the time interval (or how granular you want the data to be).
+
+You can add one or many dimensions to group the data by. For example, if you wanted to visualize the average account balance by customer segment, you would add the customer segment dimension.
+
+You can also query only dimensions. This is useful if you want to visualize your data in a table format. For example, if you wanted to visualize the name and email of all customers, you would add the name and email dimensions on a customers model.
+
+Datasets also support filter and ordering operations on both metrics and dimensions. For example, if you wanted to visualize the average account balance by customer segment, but only for customers with an average account balance greater than $100, you would add a filter on the average account balance metric.
+
+When visualizing data over a time series - for example average order size over the last 30 days - you'll want to order the data by the time dimension. This ensures that the data is visualized in the correct order.
+
+![Dataset Settings Time](/images/dashboard-page/dataset-settings-time.png)
+
+After specifying the dataset, you can preview the data by clicking on the `Preview` button.
+
+![Dataset Preview](/images/dashboard-page/dataset-preview.png)
+
+Often, you'll want to add multiple datasets to a dashboard. For example, you may want to visualize the average account balance by customer segment and account type. To do this, you would add a new dataset for account type.
+
+### Configure a chart
+
+Now that we've added a dataset, lets add a chart. On the left side of the dashboard editor, you'll see a list of elements that you can add.
+
+Cue has three main types of elements: UI, control, and data elements.
+
+UI elements are used to add text, images, and other UI components to your dashboard. Control elements are used to add filters and other controls to your dashboard. Data elements are used to visualize data.
+
+Lets add a chart to visualize the average account balance by customer segment. To do this, drag a line-chart component onto your dashboard.
+
+![Line Chart Settings](/images/dashboard-page/line-chart-settings.png)
+
+Data elements query data from your datasets. To configure the element, you'll need to select the dataset columns for the y and x axis. You can also add filters and grouping at the data element level, which will perform operations on queried data locally.
+
+Data elements also have various display settings, such as axis labels and format options.
+
+
+### Viewing your dashboard
+
+Before sharing your dashboard, you'll need to ensure you have customers created, and are viewing the dashboard as a customer. To do this, click on the `Viewing as` button on the top left corner of the dashboard and select a customer.
+
+### Publishing your dashboard
+
+Now that you've created a dashboard, you can publish it by clicking on the `Publish` button on the top right corner of the dashboard. Publishing helps you create multiple versions of your dashboard and allows you to make changes to your dashboard without affecting your users.
+
+### Sharing your dashboard
+
+Now that you've created a dashboard, you can share it with your team by clicking on the `Share` button on the top right corner of the dashboard. Here, you can either copy a snippet to embed the dashboard in an iframe, or share a link to the dashboard.
+
+## Conclusion
+
+Congratulations! You've successfully created your first dashboard with Cue!
+
+If you have any questions, please reach out to us at [caelin@trycue.ai](mailto:caelin@trycue.ai)

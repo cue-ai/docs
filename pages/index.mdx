@@ -1,0 +1,51 @@
+# Introduction
+
+Welcome to Cue! Cue helps companies setup add AI-enabled analytics to their products in an afternoon.
+
+# Key Concepts
+
+![Data Diagram](/images/diagrams/data-diagram.png)
+
+Cue's built to be fully modular. You can use the entire platform, or just the parts you need. Cue's built on top of a few core concepts:
+
+## Data Sources
+
+Cue supports both direct connection to your database or warehouse and ETL (using Fivetran) to a hosted data warehouse built on BigQuery.
+
+Direct connection is great for getting started, but ETL is recommended for production use if your data isn't real-time, and creates a privacy layer if handling sensitive data.
+
+## Data Models
+
+Cue's data models are built on top of your data sources, and are used to power analytics and visualizations.
+
+Models consist of `metrics`, `dimensions`, and `joins`. Metrics are the core of Cue's analytics, and are used to power visualizations. Dimensions are used to filter and group metrics. Joins are used to combine data from multiple data sources or models when dealing with cross-table data.
+
+Models can either be queried on demand (great for real-time data) or pre-aggregated and materialized in analytics tables (great for large datasets that don't change often).
+
+## Analytics API
+
+Every data model and metric can be queried via a simple REST API. This is the most flexible way to query data, and is great for building custom visualizations.
+
+We can also export data via a simple CSV export, reverse ETL, or via a webhook.
+
+## Visualization Layer
+
+`Dashboards` handle visualization logic for Cue. Dashboards are built on top of the API, and can be customized to your needs.
+
+Cue handles styling, layout, and data fetching for you. You can customize the dashboard to your needs, and embed it in your own website.
+
+`Dashboards` can be queried headlessly (without UI components) or with UI components. This allows you to build custom dashboards, or embed dashboards in your own website.
+
+We provide a few out-of-box visualization options:
+
+### React Components
+
+Cue provides a set of React components that can be used to build custom dashboards. These components are built on top of the API, and are fully customizable.
+
+### Embedded iframe
+
+Cue provides a simple iframe that can be embedded in any website. This is the easiest way to get started with Cue, and is great for building custom dashboards.
+
+### Custom Portals
+
+We also provide hosted dashboards that can be customized to your needs. These dashboards are built on top of the API, and can be customized to your needs.

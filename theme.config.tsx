@@ -7,7 +7,7 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/cue-ai/docs',
   },
-  docsRepositoryBase: 'https://github.com/cue-ai/docs',
+  docsRepositoryBase: 'https://github.com/cue-ai/docs/tree/main',
   footer: {
     text: 'Cue AI',
   },

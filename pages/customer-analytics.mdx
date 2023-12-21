@@ -1,0 +1,13 @@
+# Customer Analytics
+
+One of our core beliefs is that customer analytics should be treated the same as internal analytics.
+
+The Cue Customer Analytics platform allows you to track and analyze your customers' behavior using event-based analytics, just like you would with your internal analytics, and seamlessly integrate it into the rest of your analytics stack (embedded dashboards, API endpoints, etc).
+
+This means for companies that are tracking real-time data for their customers - like page views for an affiliate link sharing company - can drop in a line of code to collect an event for a page view and ship customer-facing dashboards in minutes all within Cue.
+
+## How it works
+
+Customer analytics is built on top of a Clickhouse OLAP database - a fast, columnar database that is optimized for analytics workloads. Cue provides a simple API to send events to Clickhouse, and the Clickhouse database can be added as a data source to to build dashboards or insight feeds.
+
+

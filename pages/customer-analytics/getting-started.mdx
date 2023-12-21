@@ -1,0 +1,47 @@
+# Getting Started
+
+*If you'd like to use customer analytics, contact the Cue team*
+
+We offer both API endpoints and a lightweight Javascript SDK to help you get started.
+
+## Installation
+
+## Javascript SDK
+
+[NPM Package](https://www.npmjs.com/package/@cue-ai/analytics-client-web)
+
+###  Installation
+
+```
+yarn add @cue-ai/analytics-client-web
+```
+
+Once installed, create an SDK client
+
+```ts
+import { createClient } from '@cue-ai/analytics-client-web';
+
+export const analyticsClient = createClient({
+  url, // Defaults to https://app.trycue.ai/api
+  apiKey, // Your API Key
+  organizationId, // Your organization ID
+})
+```
+
+After creating a client, you'll want to first identify the current user:
+
+```ts
+// Identify a user
+analyticsClient.identify(customerId: string)
+```
+
+Then you can track an analytics event:
+
+```ts
+// Track an event
+analyticsClient.track(eventName: string, properties: Record<string, any>)
+```
+
+## API Endpoints
+*Coming Soon*
+

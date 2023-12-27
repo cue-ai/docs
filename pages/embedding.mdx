@@ -1,0 +1,58 @@
+# Embedding
+
+After creating dashboards, there are three ways to embed them in your application
+
+## 1. React Components
+
+Embedding dashboards in your React application is the recommended way to embed dashboards. It is the most flexible and customizable way to embed dashboards.
+
+The `@cue-ai/embedded` package provides a set of React components that can be used to embed dashboards in your React application.
+
+### Installation
+
+```bash
+npm install @cue-ai/embedded
+```
+
+### Usage
+
+```jsx
+import { EmbeddedProvider, EmbeddedDashboardProvider, EmbeddedItemsRenderer  } from '@cue-ai/embedded';
+
+<EmbeddedProvider organizationId="organizationId">
+  <main className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-8">
+      <h1 className="text-2xl font-semibold text-gray-900">Embedded</h1>
+      <p className="text-sm text-gray-500 mt-2">
+        This is a demo of the embedded editor.
+      </p>
+    </div>
+    <EmbeddedDashboardProvider
+      dashboardId="dashboardId"
+      customerId="customerId"
+    >
+      <EmbeddedItemsRenderer />
+    </EmbeddedDashboardProvider>
+  </main>
+</EmbeddedProvider>
+```
+
+Swap out the `organizationId`, `dashboardId` and `customerId` with your own values.
+
+## 2. iFrame
+
+The iFrame method is the easiest way to embed dashboards. It is the least flexible and customizable way to embed dashboards.
+
+```
+<iframe
+  src="https://app.trycue.ai/customer-dashboard/{dashboardId}?customer-id={customerId}"
+/>
+```
+
+Swap out the `dashboardId` and `customerId` with your own values.
+
+## 3. Customer Portal
+
+The customer portal is a pre-built React application where your customers can access and configure their Cue dashboards.
+
+This option is available by request only.
